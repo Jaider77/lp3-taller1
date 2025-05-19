@@ -1,3 +1,6 @@
+# Datos del estudiante
+Jaider Francisco Asprilla Reyes 
+CC:1077621902
 # API de Videos
 
 Esta es una API RESTful para gestión de videos, desarrollada con Flask, Flask-RESTful y SQLAlchemy.
