@@ -75,8 +75,14 @@ class Video(Resource):
         Returns:
             VideoModel: El video creado
         """
-        # TODO
-        pass
+        #   Verificar si el video ya existe, abortar si es así. Si no, crear y guardar el nuevo video.
+        args = video_put_args.parse_args()
+        if VideoModel.query.filter_by(id=video_id).first():
+            abort(409, message=f"Ya existe un video con el ID {video_id}")
+        video = VideoModel(id=video_id, name=args['name'], views=args['views'], likes=args['likes'])
+        db.session.add(video)
+        db.session.commit()
+        return video, 201
     
     @marshal_with(resource_fields)
     def patch(self, video_id):
