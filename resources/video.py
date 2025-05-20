@@ -95,7 +95,17 @@ class Video(Resource):
         Returns:
             VideoModel: El video actualizado
         """
-        # TODO
+        #  Buscar el video, actualizar los campos recibidos y guardar los cambios
+        args = video_update_args.parse_args()
+        video = abort_if_video_doesnt_exist(video_id)
+        if args['name'] is not None:
+            video.name = args['name']
+        if args['views'] is not None:
+            video.views = args['views']
+        if args['likes'] is not None:
+            video.likes = args['likes']
+        db.session.commit()
+        return video, 200
         pass
     
     def delete(self, video_id):
