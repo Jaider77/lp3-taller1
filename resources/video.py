@@ -59,8 +59,10 @@ class Video(Resource):
         Returns:
             VideoModel: El video solicitado
         """
-        # TODO
-        pass
+        #  Buscar el video por ID y devolverlo o abortar si no existe
+        video = abort_if_video_doesnt_exist(video_id)
+        return video, 200
+    
     
     @marshal_with(resource_fields)
     def put(self, video_id):
