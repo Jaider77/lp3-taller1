@@ -118,6 +118,9 @@ class Video(Resource):
         Returns:
             str: Mensaje vacío con código 204
         """
-        # TODO
-        pass
+        #   Buscar el video y eliminarlo de la base de datos
+        video = abort_if_video_doesnt_exist(video_id)
+        db.session.delete(video)
+        db.session.commit()
+        return '', 204
 
