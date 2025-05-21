@@ -4,6 +4,7 @@ Recursos y rutas para la API de videos
 from flask_restful import Resource, reqparse, abort, fields, marshal_with
 from models.video import VideoModel
 from models import db
+from . import resource_fields
 
 # Campos para serializar respuestas
 resource_fields = {
@@ -106,7 +107,7 @@ class Video(Resource):
             video.likes = args['likes']
         db.session.commit()
         return video, 200
-        pass
+
     
     def delete(self, video_id):
         """
@@ -124,3 +125,11 @@ class Video(Resource):
         db.session.commit()
         return '', 204
 
+class VideoList(Resource):
+    @marshal_with(resource_fields)
+    def get(self):
+        """
+        Devuelve la lista de todos los videos
+        """
+        videos = VideoModel.query.all()
+    
