@@ -4,7 +4,7 @@ Recursos y rutas para la API de videos
 from flask_restful import Resource, reqparse, abort, fields, marshal_with
 from models.video import VideoModel
 from models import db
-from . import resource_fields
+
 
 # Campos para serializar respuestas
 resource_fields = {

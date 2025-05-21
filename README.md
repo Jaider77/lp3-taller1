@@ -69,7 +69,7 @@ lp3-taller1
 
 1. Iniciar el servidor de desarrollo:
    ```
-   
+   python app.py
    ```
 
 2. El servidor estará disponible en `http://localhost:5000`
